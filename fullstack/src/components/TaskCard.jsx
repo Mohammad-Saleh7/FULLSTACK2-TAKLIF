@@ -1,11 +1,13 @@
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
+import EditModal from "./EditModal";
 
 export default function TaskCard({
   task,
   onToggleStar,
   onToggleComplete,
   onDelete,
+  onEditTask,
 }) {
   const cardStyle =
     task.id === 1
@@ -32,7 +34,9 @@ export default function TaskCard({
             <i className="bi bi-calendar2-week me-2"></i>
             <span className="m-0">{task.date}</span>
           </div>
+
           <hr className={dashedLineClass} />
+
           <div className="footer-card">
             <div>
               <Card.Link
@@ -45,7 +49,7 @@ export default function TaskCard({
                 {task.completed ? "completed" : "uncompleted"}
               </Card.Link>
             </div>
-            <div className="footer-icon">
+            <div className="footer-icon d-flex gap-2 align-items-center">
               <i
                 className={`bi bi-star-fill star ${
                   task.starred ? "star-active" : ""
@@ -56,7 +60,8 @@ export default function TaskCard({
                 className="bi bi-trash-fill trash"
                 onClick={() => onDelete(task.id)}
               ></i>
-              <i className="bi bi-three-dots-vertical"></i>
+
+              <EditModal task={task} onEdit={onEditTask} />
             </div>
           </div>
         </Card.Body>
@@ -70,4 +75,5 @@ TaskCard.propTypes = {
   onToggleStar: PropTypes.func.isRequired,
   onToggleComplete: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onEditTask: PropTypes.func.isRequired,
 };

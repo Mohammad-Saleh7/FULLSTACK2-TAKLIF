@@ -1,12 +1,9 @@
-// src/components/NavBar.jsx
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
 import Container from "react-bootstrap/Container";
 import ModalComponent from "./Modal";
 
-function NavBar() {
+function NavBar({ onAddTask }) {
   const today = new Date();
   const date = today.toLocaleDateString();
 
@@ -23,10 +20,7 @@ function NavBar() {
             className="me-2 search"
           />
           <p>{date}</p>
-          {/* <Button type="submit" className="btn-nav">
-            Add new task
-          </Button> */}
-          <ModalComponent />
+          <ModalComponent onAddTask={onAddTask} />
         </Form>
       </Navbar>
     </Container>
