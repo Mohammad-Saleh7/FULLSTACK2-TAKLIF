@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "SomeThing",
+    "description": "hi there",
+    "date": "10/19/2024",
+    "completed": false,
+    "starred": true
+  },
+  {
+    "id": 2,
+    "title": "Task 1",
+    "description": "This is the description for this task",
+    "date": "04/12/2023",
+    "completed": false,
+    "starred": false
+  },
+  {
+    "id": 3,
+    "title": "Task 2",
+    "description": "This is the description for this task",
+    "date": "05/15/2023",
+    "completed": true,
+    "starred": true
+  }
+]

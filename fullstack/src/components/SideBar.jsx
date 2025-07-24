@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import ModalComponent from "./Modal";
 import { useState } from "react";
 
 function SideBar() {
@@ -20,13 +21,14 @@ function SideBar() {
     <Nav defaultActiveKey="/home" className="flex-column ms-2">
       <h5 className="ms-3 mt-3 d-none d-md-block">TO‑DO LIST</h5>
       <div className="d-flex px-3">
-        <Button
+        {/* <Button
           variant="navy"
           style={{ backgroundColor: "navy", color: "white", width: "100%" }}
           className="mt-3 mb-4"
         >
           ADD NEW TASKS
-        </Button>
+        </Button> */}
+        <ModalComponent />
       </div>
       <NavLink
         className={`navLink text-decoration-none text-dark mb-2 ${isActive(
