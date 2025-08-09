@@ -13,7 +13,6 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // مسیر درست ساخت یوزر
       await axios.post("http://localhost:3000/api/users", form);
 
       alert("Signup successful! Please login.");
@@ -25,14 +24,15 @@ export default function Signup() {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container singUp">
       <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="signUp-inputs">
         <input
           name="username"
           placeholder="Username"
           value={form.username}
           onChange={handleChange}
+          className="inputs-form"
           required
         />
         <input
@@ -41,6 +41,7 @@ export default function Signup() {
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
+          className="inputs-form"
           required
         />
         <input
@@ -49,11 +50,19 @@ export default function Signup() {
           placeholder="Password"
           value={form.password}
           onChange={handleChange}
+          className="inputs-form"
           required
         />
-        <button type="submit">Signup</button>
+        <button type="submit" style={{ borderRadius: "10px" }}>
+          Signup
+        </button>
       </form>
-      <p onClick={() => navigate("/login")}>Already have an account? Login</p>
+      <p
+        onClick={() => navigate("/login")}
+        style={{ fontWeight: "bold", cursor: "pointer" }}
+      >
+        Already have an account? Login
+      </p>
     </div>
   );
 }

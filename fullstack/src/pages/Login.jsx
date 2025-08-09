@@ -13,17 +13,14 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // مسیر درست برای لاگین
       const res = await axios.post(
         "http://localhost:3000/api/users/login",
         form
       );
-
-      // ذخیره توکن در localStorage
       localStorage.setItem("token", res.data.token);
 
       alert("Login successful!");
-      navigate("/"); // بعد از لاگین به صفحه اصلی تسک‌ها
+      navigate("/");
     } catch (err) {
       console.error(err.response?.data);
       alert(err.response?.data?.message || "Login failed");
@@ -31,15 +28,16 @@ export default function Login() {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container login">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-inputs">
         <input
           name="email"
           type="email"
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
+          className="inputs-form"
           required
         />
         <input
@@ -48,11 +46,19 @@ export default function Login() {
           placeholder="Password"
           value={form.password}
           onChange={handleChange}
+          className="inputs-form"
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit" style={{ borderRadius: "10px" }}>
+          Login
+        </button>
       </form>
-      <p onClick={() => navigate("/signup")}>Don't have an account? Signup</p>
+      <p
+        onClick={() => navigate("/signup")}
+        style={{ cursor: "pointer", fontWeight: "bold" }}
+      >
+        Don't have an account? Signup
+      </p>
     </div>
   );
 }
